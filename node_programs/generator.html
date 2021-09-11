@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>NodeJS WebApp</title>
+    <style type="text/css">
+        h1{
+            color: #f00;
+        }
+    </style>
+  </head>
+  <body>
+
+    <h1>Generator</h1>
+
+    <button onClick="getSteps()">Next</button>
+
+    <script>
+        function* steps(){
+            let a=10;
+            let b=2;
+
+            yield `step 1 done: sum=${a+b}`;
+            yield `step 1 done: sub=${a-b}`;
+            yield `step 1 done: mul=${a*b}`;
+            yield `step 1 done: div=${a/b}`;
+            yield `step 1 done: mod=${a%b}`;
+        }
+        let s = steps();
+        function getSteps() {
+            console.log(s.next());
+        }
+    </script>
+</body>
+</html>
