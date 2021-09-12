@@ -1,14 +1,44 @@
-const a = 200;
-let b = 0;
+/*
+Promise.all
+Promise.allSettled
+Promise.race
+*/
 
-const waitingData = new Promise((resolve, reject) => {
-    setTimeout(() =>{
-        b = 500;
-        resolve(b);
-    },2000)
+let data = Promise.all([
+    new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            resolve('2 seconds')
+        },2000)
+    }),
+    new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            resolve('1 seconds')
+        },1000)
+    }),
+    new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            resolve('3 seconds')
+        },3000)
+    })
+])
+
+data.then((item)=>{
+    console.warn('Then block: ',item)
+}).catch((err)=>{
+    console.warn('Catch block: ',err)
 })
 
-waitingData.then((data) =>{
-    b = data;
-    console.log(a+b);
-})
+
+
+// let data = new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//         resolve(`1 seconds`)
+//     },1000)
+// })
+
+// data.then((item)=>{
+//     throw new Error(`User generated error`)
+//     console.log('Then block: ',item)
+// }).catch((err)=>{
+//     console.log('Catch block: ',err)
+// })
