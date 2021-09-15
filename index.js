@@ -19,9 +19,15 @@ app.get('/help',(_,res)=>{
 app.get('/profile',(_,res)=>{
     const user={
         name:"Ashish Kumar",
-        email:"666kmandal@gmail.com"
+        email:"666kmandal@gmail.com",
+        country:"India",
+        skills:['php','node','python','javascript','c++','java']
     }
     res.render('profile',{user:user});
+})
+
+app.get('/login',(_,res)=>{
+    res.render('login')
 })
 
 app.get('*',(_,res)=>{
